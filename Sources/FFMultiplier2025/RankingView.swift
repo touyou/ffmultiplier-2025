@@ -1,7 +1,7 @@
 import SwiftUI
 import FFMultiplierModel
 
-struct ItemListView : View {
+struct RankingView : View {
     @Environment(ViewModel.self) var viewModel: ViewModel
     
     var body: some View {

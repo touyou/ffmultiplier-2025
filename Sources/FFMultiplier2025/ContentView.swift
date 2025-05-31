@@ -22,7 +22,7 @@ struct ContentView: View {
             .tag(ContentTab.home)
             
             NavigationStack {
-                ItemListView()
+                RankingView()
                     .navigationTitle(Text("\(viewModel.items.count) Items"))
             }
             .tabItem {
