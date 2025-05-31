@@ -378,6 +378,35 @@
         }
       }
     },
+    "Ranking" : {
+      "comment" : "Tab bar item title for the Ranking tab",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキング"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排行"
+          }
+        }
+      }
+    },
     "Save" : {
       "comment" : "Button title indicating that the current contents should be saved",
       "localizations" : {
@@ -525,35 +554,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "版本 %1$@ (%2$@)"
-          }
-        }
-      }
-    },
-    "Welcome" : {
-      "comment" : "Tab bar item title for the Welcome tab",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bienvenido"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bienvenue"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ようこそ"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "欢迎"
           }
         }
       }
