@@ -1,6 +1,6 @@
 import Foundation
 import Observation
-import SkipFuse
+import OSLog
 
 /// A logger for the FFMultiplierModel module.
 let logger: Logger = Logger(subsystem: "ffmultiplier.model", category: "FFMultiplierModel")

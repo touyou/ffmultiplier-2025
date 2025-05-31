@@ -1,6 +1,6 @@
 import Foundation
-import SkipFuse
-import SkipFuseUI
+import OSLog
+import SwiftUI
 
 /// A logger for the FFMultiplier2025 module.
 let logger: Logger = Logger(subsystem: "com.dev.touyou.FFMultiply", category: "FFMultiplier2025")
@@ -8,8 +8,8 @@ let logger: Logger = Logger(subsystem: "com.dev.touyou.FFMultiply", category: "F
 /// The shared top-level view for the app, loaded from the platform-specific App delegates below.
 ///
 /// The default implementation merely loads the `ContentView` for the app and logs a message.
-/* SKIP @bridge */public struct FFMultiplier2025RootView : View {
-    /* SKIP @bridge */public init() {
+public struct FFMultiplier2025RootView : View {
+    public init() {
     }
 
     public var body: some View {
@@ -23,33 +23,33 @@ let logger: Logger = Logger(subsystem: "com.dev.touyou.FFMultiply", category: "F
 /// Global application delegate functions.
 ///
 /// These functions can update a shared observable object to communicate app state changes to interested views.
-/* SKIP @bridge */public final class FFMultiplier2025AppDelegate : Sendable {
-    /* SKIP @bridge */public static let shared = FFMultiplier2025AppDelegate()
+public final class FFMultiplier2025AppDelegate : Sendable {
+    public static let shared = FFMultiplier2025AppDelegate()
 
     private init() {
     }
 
-    /* SKIP @bridge */public func onStart() {
+    public func onStart() {
         logger.debug("onStart")
     }
 
-    /* SKIP @bridge */public func onResume() {
+    public func onResume() {
         logger.debug("onResume")
     }
 
-    /* SKIP @bridge */public func onPause() {
+    public func onPause() {
         logger.debug("onPause")
     }
 
-    /* SKIP @bridge */public func onStop() {
+    public func onStop() {
         logger.debug("onStop")
     }
 
-    /* SKIP @bridge */public func onDestroy() {
+    public func onDestroy() {
         logger.debug("onDestroy")
     }
 
-    /* SKIP @bridge */public func onLowMemory() {
+    public func onLowMemory() {
         logger.debug("onLowMemory")
     }
 }

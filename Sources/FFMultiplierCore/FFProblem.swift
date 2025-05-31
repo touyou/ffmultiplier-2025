@@ -3,7 +3,7 @@ public struct FFProblem: Equatable, Hashable {
     let b: FNumber
     
     public var answer: FNumber {
-        return a * b
+        return a.times(b)
     }
     
     public func hash(into hasher: inout Hasher) {

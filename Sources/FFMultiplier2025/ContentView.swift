@@ -1,4 +1,4 @@
-import SkipFuseUI
+import SwiftUI
 import FFMultiplierModel
 
 enum ContentTab: String, Hashable {
@@ -158,21 +158,12 @@ struct SettingsView : View {
 /// A view that shows a blue heart on iOS and a green heart on Android.
 struct PlatformHeartView : View {
     var body: some View {
-        #if os(Android)
-        ComposeView {
-            HeartComposer()
-        }
-        #else
-        Text(verbatim: "💙")
-        #endif
+       #if SKIP
+       ComposeView { ctx in // Mix in Compose code!
+           androidx.compose.material3.Text("💚", modifier: ctx.modifier)
+       }
+       #else
+       Text(verbatim: "💙")
+       #endif
     }
 }
-
-#if SKIP
-/// Use a ContentComposer to integrate Compose content. This code will be transpiled to Kotlin.
-struct HeartComposer : ContentComposer {
-    @Composable func Compose(context: ComposeContext) {
-        androidx.compose.material3.Text("💚", modifier: context.modifier)
-    }
-}
-#endif

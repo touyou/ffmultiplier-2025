@@ -18,8 +18,8 @@ public struct FNumber: Equatable, Hashable {
         self._value = value
     }
     
-    public static func * (lhs: FNumber, rhs: FNumber) -> FNumber {
-        return FNumber(value: lhs._value * rhs._value)
+    public func times(_ rhs: FNumber) -> FNumber {
+        return FNumber(value: self._value * rhs._value)
     }
     
     /// 乱数を生成する
