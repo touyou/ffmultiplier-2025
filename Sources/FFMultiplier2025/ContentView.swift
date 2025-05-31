@@ -9,7 +9,7 @@ struct ContentView: View {
     @AppStorage("tab") var tab = ContentTab.home
     @AppStorage("name") var welcomeName = "No Name"
     @AppStorage("appearance") var appearance = ""
-    @State var viewModel = ViewModel()
+    @State var viewModel = RankingViewModel()
     
     var body: some View {
         TabView(selection: $tab) {

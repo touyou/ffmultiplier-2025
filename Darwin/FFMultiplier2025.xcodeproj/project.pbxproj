@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		462BE37D2DEB2A6900BD1FEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 462BE37C2DEB2A6900BD1FEE /* GoogleService-Info.plist */; };
 		491F27822DA55B72004926EE /* FFMultiplier2025 in Frameworks */ = {isa = PBXBuildFile; productRef = 491F27812DA55B72004926EE /* FFMultiplier2025 */; };
 		491F27832DA55B72004926EE /* FFMultiplier2025 in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 491F27812DA55B72004926EE /* FFMultiplier2025 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		496BDBEE2B8A7E9C00C09264 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 496BDBED2B8A7E9C00C09264 /* Localizable.xcstrings */; };
@@ -29,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		462BE37C2DEB2A6900BD1FEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4900101C2BACEA710000DE33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		493609562A6B7EAE00C401E2 /* FFMultiplier2025 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FFMultiplier2025; path = ..; sourceTree = "<group>"; };
 		496BDBEB2B89A47800C09264 /* FFMultiplier2025.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFMultiplier2025.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,7 @@
 		49F90C1F2A52156200F06D93 = {
 			isa = PBXGroup;
 			children = (
+				462BE37C2DEB2A6900BD1FEE /* GoogleService-Info.plist */,
 				496EB72F2A6AE4DE00C1253C /* README.md */,
 				496EB72F2A6AE4DE00C1253A /* Skip.env */,
 				496EB72F2A6AE4DE00C1253B /* FFMultiplier2025.xcconfig */,
@@ -158,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462BE37D2DEB2A6900BD1FEE /* GoogleService-Info.plist in Resources */,
 				499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */,
 				496BDBEE2B8A7E9C00C09264 /* Localizable.xcstrings in Resources */,
 			);
@@ -205,6 +209,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = B4S4333JDW;
 				ENABLE_PREVIEWS = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 			};
@@ -216,6 +221,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = B4S4333JDW;
 				ENABLE_PREVIEWS = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 			};

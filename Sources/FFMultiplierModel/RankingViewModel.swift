@@ -6,7 +6,7 @@ import OSLog
 let logger: Logger = Logger(subsystem: "ffmultiplier.model", category: "FFMultiplierModel")
 
 /// The Observable ViewModel used by the application.
-@Observable public class ViewModel {
+@Observable public class RankingViewModel {
     public var items: [Item] = loadItems() {
         didSet { saveItems() }
     }
@@ -61,7 +61,7 @@ public struct Item : Identifiable, Hashable, Codable {
 }
 
 /// Utilities for defaulting and persising the items in the list
-extension ViewModel {
+extension RankingViewModel {
     private static let savePath = URL.applicationSupportDirectory.appendingPathComponent("appdata.json")
 
     fileprivate static func loadItems() -> [Item] {

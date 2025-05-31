@@ -2,7 +2,7 @@ import SwiftUI
 import FFMultiplierModel
 
 struct RankingView : View {
-    @Environment(ViewModel.self) var viewModel: ViewModel
+    @Environment(RankingViewModel.self) var viewModel: RankingViewModel
     
     var body: some View {
         List {
@@ -45,7 +45,7 @@ struct RankingView : View {
 
 struct ItemView : View {
     @State var item: Item
-    @Environment(ViewModel.self) var viewModel: ViewModel
+    @Environment(RankingViewModel.self) var viewModel: RankingViewModel
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
