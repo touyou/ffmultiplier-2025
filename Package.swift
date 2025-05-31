@@ -31,6 +31,7 @@ let package = Package(
     .target(name: "FFMultiplierModel", dependencies: [
       "FFMultiplierCore",
       .product(name: "SkipModel", package: "skip-model"),
+      .product(name: "SkipFirebaseCore", package: "skip-firebase"),
       .product(name: "SkipFirebaseFirestore", package: "skip-firebase"),
     ], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     .testTarget(name: "FFMultiplierModelTests", dependencies: [
