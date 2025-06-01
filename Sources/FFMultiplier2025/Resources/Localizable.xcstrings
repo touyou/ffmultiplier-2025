@@ -494,9 +494,6 @@
         }
       }
     },
-    "Test" : {
-
-    },
     "Title" : {
       "comment" : "Label for the item editor form indicating the title of the item",
       "localizations" : {

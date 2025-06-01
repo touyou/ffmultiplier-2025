@@ -2,8 +2,27 @@ import Foundation
 import Observation
 import OSLog
 
+#if !SKIP
+import FirebaseCore
+import FirebaseFirestore
+#else
+import SkipFirebaseCore
+import SkipFirebaseFirestore
+#endif
+
 /// A logger for the FFMultiplierModel module.
 let logger: Logger = Logger(subsystem: "ffmultiplier.model", category: "FFMultiplierModel")
+
+@Observable public class OnlineRankingList {
+  private var listener: ListenerRegistration? = nil
+  public var scores: [Score] = []
+  
+  init(_ collection: CollectionReference) {
+    let listener = collection.addSnapshotListener(includeMetadataChanges: true, listener: { [weak self] snap, err in
+      
+    })
+  }
+}
 
 /// The Observable ViewModel used by the application.
 @Observable public class RankingViewModel {
