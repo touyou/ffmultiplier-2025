@@ -30,5 +30,9 @@ public actor FirebaseModel {
        try await firestore.collection("users").addDocument(data: User(name: name, uuid: deviceId).data)
     }
   }
+  
+  @MainActor public func watchRanking() async throws -> OnlineRankingList {
+    return await OnlineRankingList(firestore.collection("scores"))
+  }
 }
 

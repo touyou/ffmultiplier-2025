@@ -2,79 +2,47 @@ import SwiftUI
 import FFMultiplierModel
 
 struct RankingView : View {
-    @Environment(RankingViewModel.self) var viewModel: RankingViewModel
-    
-    var body: some View {
-        List {
-            ForEach(viewModel.items) { item in
-                NavigationLink(value: item) {
-                    Label {
-                        Text(item.itemTitle)
-                    } icon: {
-                        if item.favorite {
-                            Image(systemName: "star.fill")
-                                .foregroundStyle(.yellow)
-                        }
-                    }
-                }
-            }
-            .onDelete { offsets in
-                viewModel.items.remove(atOffsets: offsets)
-            }
-            .onMove { fromOffsets, toOffset in
-                viewModel.items.move(fromOffsets: fromOffsets, toOffset: toOffset)
-            }
+  @Environment(RankingViewModel.self) var viewModel: RankingViewModel
+  @State private var rankingList: OnlineRankingList? = nil
+  
+  var body: some View {
+    List {
+      if let rankingList {
+        ForEach(rankingList.scores) { score in
+          RankItem(score: score)
         }
-        .navigationDestination(for: Item.self) { item in
-            ItemView(item: item)
-                .navigationTitle(item.itemTitle)
-        }
-        .toolbar {
-            ToolbarItemGroup {
-                Button {
-                    withAnimation {
-                        viewModel.items.insert(Item(), at: 0)
-                    }
-                } label: {
-                    Label("Add", systemImage: "plus")
-                }
-            }
-        }
+      }
     }
+    .task {
+      do {
+        let onlineRanking = try await FirebaseModel.shared.watchRanking()
+        self.rankingList = onlineRanking
+      } catch {
+        
+      }
+    }
+  }
 }
 
-struct ItemView : View {
-    @State var item: Item
-    @Environment(RankingViewModel.self) var viewModel: RankingViewModel
-    @Environment(\.dismiss) var dismiss
-    
-    var body: some View {
-        Form {
-            TextField("Title", text: $item.title)
-                .textFieldStyle(.roundedBorder)
-            Toggle("Favorite", isOn: $item.favorite)
-            DatePicker("Date", selection: $item.date)
-            Text("Notes").font(.title3)
-            TextEditor(text: $item.notes)
-                .border(Color.secondary, width: 1.0)
-        }
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    dismiss()
-                }
-            }
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
-                    viewModel.save(item: item)
-                    dismiss()
-                }
-                .disabled(!viewModel.isUpdated(item))
-            }
-        }
+struct RankItem: View {
+  let score: Score
+  @State private var userName: String?
+  
+  var body: some View {
+    VStack(alignment: .leading) {
+      if let userName {
+        Text(userName.isEmpty ? "Anonymous" : userName)
+      } else {
+        ProgressView()
+      }
+      HStack {
+        Text("\(score.score)pt").bold()
+        Spacer()
+        Text("\(score.updatedAt, style: .date) \(score.updatedAt, style: .time)").font(.footnote)
+      }
     }
+    .task {
+      userName = (try? await score.getUser())?.name
+    }
+  }
 }
-
-
-

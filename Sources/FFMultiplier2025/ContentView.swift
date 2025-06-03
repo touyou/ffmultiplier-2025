@@ -23,7 +23,7 @@ struct ContentView: View {
             
             NavigationStack {
                 RankingView()
-                    .navigationTitle(Text("\(viewModel.items.count) Items"))
+                    .navigationTitle(Text("Ranking"))
             }
             .tabItem {
                 Label("Ranking", systemImage: "star.fill")
