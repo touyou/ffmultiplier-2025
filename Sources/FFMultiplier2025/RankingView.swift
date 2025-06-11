@@ -1,5 +1,6 @@
 import SwiftUI
 import FFMultiplierModel
+import OSLog
 
 struct RankingView : View {
   @Environment(RankingViewModel.self) var viewModel: RankingViewModel
@@ -7,10 +8,12 @@ struct RankingView : View {
   
   var body: some View {
     List {
-      if let rankingList {
+      if let rankingList, !rankingList.scores.isEmpty {
         ForEach(rankingList.scores) { score in
           RankItem(score: score)
         }
+      } else {
+        Text("Empty")
       }
     }
     .task {
@@ -18,7 +21,7 @@ struct RankingView : View {
         let onlineRanking = try await FirebaseModel.shared.watchRanking()
         self.rankingList = onlineRanking
       } catch {
-        
+        logger.error("error: \(error)")
       }
     }
   }

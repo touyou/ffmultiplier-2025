@@ -2,12 +2,6 @@ import Foundation
 import OSLog
 import SwiftUI
 
-#if !SKIP
-import FirebaseCore
-#else
-import SkipFirebaseCore
-#endif
-
 /// A logger for the FFMultiplier2025 module.
 let logger: Logger = Logger(subsystem: "com.dev.touyou.FFMultiply", category: "FFMultiplier2025")
 
@@ -37,7 +31,6 @@ public final class FFMultiplier2025AppDelegate : Sendable {
   
   public func onStart() {
     logger.debug("onStart")
-    FirebaseApp.configure()
   }
   
   public func onResume() {
