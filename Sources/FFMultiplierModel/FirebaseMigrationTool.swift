@@ -10,20 +10,8 @@ import FirebaseFirestore
 
 #if !SKIP
 
-extension FirebaseModel {
-  @available(*, deprecated)
-  public func initializeDatabaseAtOnce() async throws {
-    let datas = try JSONDecoder().decode([String: OldScore].self, from: originalData.data(using: .utf8)!)
-      for (_, _) in datas {
-//      let userDoc = firestore.collection("users").document()
-//      let user = User(name: value.name ?? "", uuid: key)
-//      let score = Score(user: userDoc, score: value.score, updatedAt: .now)
-//      try await userDoc.setData(user.data)
-//      try await firestore.collection("scores").addDocument(data: score.data)
-    }
-    print("completed")
-  }
-}
+// The following migration function was deprecated and incomplete.
+// It has been removed to avoid confusion and code clutter.
 
 struct OldScore: Codable {
   let name: String?
