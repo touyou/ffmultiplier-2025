@@ -44,7 +44,7 @@ struct RankItem: View {
                 }
             }
             HStack {
-                Text(String(localized: "%lldpt", score.score)).bold()
+                Text("\(score.score)pt").bold()
                 Spacer()
                 Text("\(score.updatedAt, style: .date) \(score.updatedAt, style: .time)").font(.footnote)
             }
