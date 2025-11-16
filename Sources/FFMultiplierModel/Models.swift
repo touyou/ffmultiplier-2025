@@ -69,7 +69,13 @@ public struct User {
     }
     
     public init(from dict: [String: Any]) throws {
-        self.name = dict["name"] as! String
-        self.uuid = dict["uuid"] as! String
+        guard let name = dict["name"] as? String else {
+            throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: [], debugDescription: "Expected 'name' to be a String"))
+        }
+        guard let uuid = dict["uuid"] as? String else {
+            throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: [], debugDescription: "Expected 'uuid' to be a String"))
+        }
+        self.name = name
+        self.uuid = uuid
     }
 }
