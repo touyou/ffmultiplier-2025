@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 extension FirebaseModel {
   @available(*, deprecated)
-  public func initializeDatabaseAtOnece() async throws {
+  public func initializeDatabaseAtOnce() async throws {
     let datas = try JSONDecoder().decode([String: OldScore].self, from: originalData.data(using: .utf8)!)
       for (_, _) in datas {
 //      let userDoc = firestore.collection("users").document()
