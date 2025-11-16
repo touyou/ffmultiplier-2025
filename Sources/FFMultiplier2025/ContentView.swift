@@ -13,31 +13,26 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $tab) {
-            NavigationStack {
-                WelcomeView(welcomeName: $welcomeName)
+            Tab("Home", systemImage: "house.fill", value: ContentTab.home) {
+                NavigationStack {
+                    WelcomeView(welcomeName: $welcomeName)
+                }
             }
-            .tabItem {
-                Label("Home", systemImage: "house.fill")
-            }
-            .tag(ContentTab.home)
             
-            NavigationStack {
-                RankingView()
-                    .navigationTitle(Text("Ranking"))
+            Tab("Ranking", systemImage: "star.fill", value: ContentTab.rankings) {
+                NavigationStack {
+                    RankingView()
+                        .navigationTitle(Text("Ranking"))
+                }
+                .toolbarTitleDisplayMode(.inlineLarge)
             }
-            .tabItem {
-                Label("Ranking", systemImage: "star.fill")
-            }
-            .tag(ContentTab.rankings)
             
-            NavigationStack {
-                SettingsView(appearance: $appearance, welcomeName: $welcomeName)
-                    .navigationTitle("Settings")
+            Tab("Settings", systemImage: "gearshape.fill", value: ContentTab.settings) {
+                NavigationStack {
+                    SettingsView(appearance: $appearance, welcomeName: $welcomeName)
+                        .navigationTitle("Settings")
+                }
             }
-            .tabItem {
-                Label("Settings", systemImage: "gearshape.fill")
-            }
-            .tag(ContentTab.settings)
         }
         .environment(viewModel)
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
