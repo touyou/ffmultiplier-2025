@@ -32,12 +32,18 @@ public struct Score: Identifiable {
     }
     
     public init(from dict: [String: Any]) throws {
-        if dict["user"] is String {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "user must be DocumentReference"))
+        guard let user = dict["user"] as? DocumentReference else {
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "user must be a DocumentReference"))
         }
-        self.user = dict["user"] as! DocumentReference
-        self.score = dict["score"] as! Int
-        self.updatedAt = (dict["updatedAt"] as! Timestamp).dateValue()
+        guard let score = dict["score"] as? Int else {
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "score must be an Int"))
+        }
+        guard let timestamp = dict["updatedAt"] as? Timestamp else {
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "updatedAt must be a Timestamp"))
+        }
+        self.user = user
+        self.score = score
+        self.updatedAt = timestamp.dateValue()
     }
     
     @MainActor
