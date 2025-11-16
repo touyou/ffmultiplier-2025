@@ -1,10 +1,9 @@
 import SwiftUI
 import FFMultiplierModel
-import OSLog
 
 struct RankingView : View {
   @Environment(RankingViewModel.self) var viewModel: RankingViewModel
-  @State private var rankingList: OnlineRankingList? = nil
+  @State internal var rankingList: OnlineRankingList? = nil
   
   var body: some View {
     List {
@@ -29,7 +28,7 @@ struct RankingView : View {
 
 struct RankItem: View {
   let score: Score
-  @State private var userName: String?
+  @State internal var userName: String?
   
   var body: some View {
     VStack(alignment: .leading) {

@@ -1,19 +1,18 @@
 import Foundation
-import OSLog
 import Observation
 
-#if !SKIP
-import FirebaseCore
-import FirebaseFirestore
-#else
+#if os(Android)
 import SkipFirebaseCore
-import SkipFirebaseFirestore
+@preconcurrency import SkipFirebaseFirestore
+#else
+import FirebaseCore
+@preconcurrency import FirebaseFirestore
 #endif
 
 public actor FirebaseModel {
   private let firestore: Firestore
   
-  public static var shared = FirebaseModel()
+  public static let shared = FirebaseModel()
   
   public init() {
     self.firestore = Firestore.firestore()

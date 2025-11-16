@@ -1,13 +1,12 @@
 import Foundation
+import SkipFuse
 import Observation
-import OSLog
-
-#if !SKIP
-import FirebaseCore
-import FirebaseFirestore
-#else
+#if os(Android)
 import SkipFirebaseCore
 import SkipFirebaseFirestore
+#else
+import FirebaseCore
+import FirebaseFirestore
 #endif
 
 /// A logger for the FFMultiplierModel module.

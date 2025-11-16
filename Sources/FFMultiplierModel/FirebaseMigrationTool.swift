@@ -1,9 +1,11 @@
-#if !SKIP
-import FirebaseCore
-import FirebaseFirestore
-#else
+import Foundation
+import SkipFuse
+#if os(Android)
 import SkipFirebaseCore
 import SkipFirebaseFirestore
+#else
+import FirebaseCore
+import FirebaseFirestore
 #endif
 
 #if !SKIP
@@ -12,7 +14,7 @@ extension FirebaseModel {
   @available(*, deprecated)
   public func initializeDatabaseAtOnece() async throws {
     let datas = try JSONDecoder().decode([String: OldScore].self, from: originalData.data(using: .utf8)!)
-    for (key, value) in datas {
+      for (_, _) in datas {
 //      let userDoc = firestore.collection("users").document()
 //      let user = User(name: value.name ?? "", uuid: key)
 //      let score = Score(user: userDoc, score: value.score, updatedAt: .now)

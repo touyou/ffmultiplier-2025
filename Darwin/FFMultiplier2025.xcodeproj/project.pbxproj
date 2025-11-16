@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		462BE37D2DEB2A6900BD1FEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 462BE37C2DEB2A6900BD1FEE /* GoogleService-Info.plist */; };
-		4673D4B72DF83D3500AFB900 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 4673D4B62DF83D3500AFB900 /* AppIcon.icon */; };
+		4688A4F12EC8B64D00297F3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4688A4F02EC8B64D00297F3F /* GoogleService-Info.plist */; };
+		4688A4F32EC8B66500297F3F /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 4688A4F22EC8B66500297F3F /* AppIcon.icon */; };
 		491F27822DA55B72004926EE /* FFMultiplier2025 in Frameworks */ = {isa = PBXBuildFile; productRef = 491F27812DA55B72004926EE /* FFMultiplier2025 */; };
 		491F27832DA55B72004926EE /* FFMultiplier2025 in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 491F27812DA55B72004926EE /* FFMultiplier2025 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		496BDBEE2B8A7E9C00C09264 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 496BDBED2B8A7E9C00C09264 /* Localizable.xcstrings */; };
@@ -31,8 +31,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		462BE37C2DEB2A6900BD1FEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4673D4B62DF83D3500AFB900 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		4688A4F02EC8B64D00297F3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4688A4F22EC8B66500297F3F /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		4900101C2BACEA710000DE33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		493609562A6B7EAE00C401E2 /* FFMultiplier2025 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FFMultiplier2025; path = ..; sourceTree = "<group>"; };
 		496BDBEB2B89A47800C09264 /* FFMultiplier2025.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFMultiplier2025.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,7 +40,7 @@
 		496EB72F2A6AE4DE00C1253A /* Skip.env */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Skip.env; path = ../Skip.env; sourceTree = "<group>"; };
 		496EB72F2A6AE4DE00C1253B /* FFMultiplier2025.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FFMultiplier2025.xcconfig; sourceTree = "<group>"; };
 		496EB72F2A6AE4DE00C1253C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		499AB9082B0581F4005E8330 /* plugins */ = {isa = PBXFileReference; lastKnownFileType = folder; name = plugins; path = ../../../SourcePackages/plugins; sourceTree = BUILT_PRODUCTS_DIR; };
+		499AB9082B0581F4005E8330 /* plugins */ = {isa = PBXFileReference; lastKnownFileType = folder; name = plugins; path = ../../Intermediates.noindex/BuildToolPluginIntermediates; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F90C2B2A52156200F06D93 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Main.swift; path = Sources/Main.swift; sourceTree = SOURCE_ROOT; };
 		49F90C2F2A52156300F06D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49F90C312A52156300F06D93 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -77,9 +77,9 @@
 		49F90C1F2A52156200F06D93 = {
 			isa = PBXGroup;
 			children = (
-				4673D4B62DF83D3500AFB900 /* AppIcon.icon */,
-				462BE37C2DEB2A6900BD1FEE /* GoogleService-Info.plist */,
+				4688A4F22EC8B66500297F3F /* AppIcon.icon */,
 				496EB72F2A6AE4DE00C1253C /* README.md */,
+				4688A4F02EC8B64D00297F3F /* GoogleService-Info.plist */,
 				496EB72F2A6AE4DE00C1253A /* Skip.env */,
 				496EB72F2A6AE4DE00C1253B /* FFMultiplier2025.xcconfig */,
 				496BDBED2B8A7E9C00C09264 /* Localizable.xcstrings */,
@@ -164,10 +164,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4673D4B72DF83D3500AFB900 /* AppIcon.icon in Resources */,
-				462BE37D2DEB2A6900BD1FEE /* GoogleService-Info.plist in Resources */,
 				499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */,
+				4688A4F32EC8B66500297F3F /* AppIcon.icon in Resources */,
 				496BDBEE2B8A7E9C00C09264 /* Localizable.xcstrings in Resources */,
+				4688A4F12EC8B64D00297F3F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,9 +211,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 496EB72F2A6AE4DE00C1253B /* FFMultiplier2025.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				DEVELOPMENT_TEAM = B4S4333JDW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
@@ -225,9 +222,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 496EB72F2A6AE4DE00C1253B /* FFMultiplier2025.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				DEVELOPMENT_TEAM = B4S4333JDW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
@@ -260,7 +254,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;

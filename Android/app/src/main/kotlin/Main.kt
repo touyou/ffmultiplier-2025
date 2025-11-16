@@ -4,7 +4,6 @@ import skip.lib.*
 import skip.model.*
 import skip.foundation.*
 import skip.ui.*
-import skip.firebase.core.FirebaseApp
 
 import android.Manifest
 import android.app.Application
@@ -23,6 +22,9 @@ import androidx.core.app.ActivityCompat
 
 internal val logger: SkipLogger = SkipLogger(subsystem = "ffmultiplier2025.module", category = "FFMultiplier2025")
 
+private typealias AppRootView = FFMultiplier2025RootView
+private typealias AppDelegate = FFMultiplier2025AppDelegate
+
 /// AndroidAppMain is the `android.app.Application` entry point, and must match `application android:name` in the AndroidMainfest.xml file.
 open class AndroidAppMain: Application {
     constructor() {
@@ -32,8 +34,7 @@ open class AndroidAppMain: Application {
         super.onCreate()
         logger.info("starting app")
         ProcessInfo.launch(applicationContext)
-        
-        FirebaseApp.configure()
+        AppDelegate.shared.onInit()
     }
 
     companion object {
@@ -59,6 +60,8 @@ open class MainActivity: AppCompatActivity {
             }
         }
 
+        AppDelegate.shared.onLaunch()
+
         // Example of requesting permissions on startup.
         // These must match the permissions in the AndroidManifest.xml file.
         //let permissions = listOf(
@@ -72,33 +75,33 @@ open class MainActivity: AppCompatActivity {
     }
 
     override fun onStart() {
+        logger.info("onStart")
         super.onStart()
-        FFMultiplier2025AppDelegate.shared.onStart()
     }
 
     override fun onResume() {
         super.onResume()
-        FFMultiplier2025AppDelegate.shared.onResume()
+        AppDelegate.shared.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        FFMultiplier2025AppDelegate.shared.onPause()
+        AppDelegate.shared.onPause()
     }
 
     override fun onStop() {
         super.onStop()
-        FFMultiplier2025AppDelegate.shared.onStop()
+        AppDelegate.shared.onStop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        FFMultiplier2025AppDelegate.shared.onDestroy()
+        AppDelegate.shared.onDestroy()
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        FFMultiplier2025AppDelegate.shared.onLowMemory()
+        AppDelegate.shared.onLowMemory()
     }
 
     override fun onRestart() {
@@ -106,7 +109,7 @@ open class MainActivity: AppCompatActivity {
         super.onRestart()
     }
 
-    override fun onSaveInstanceState(bundle: android.os.Bundle): Unit = super.onSaveInstanceState(bundle)
+    override fun onSaveInstanceState(outState: android.os.Bundle): Unit = super.onSaveInstanceState(outState)
 
     override fun onRestoreInstanceState(bundle: android.os.Bundle) {
         // Usually you restore your state in onCreate(). It is possible to restore it in onRestoreInstanceState() as well, but not very common. (onRestoreInstanceState() is called after onStart(), whereas onCreate() is called before onStart().
@@ -129,7 +132,7 @@ internal fun PresentationRootView(context: ComposeContext) {
     PresentationRoot(defaultColorScheme = colorScheme, context = context) { ctx ->
         val contentContext = ctx.content()
         Box(modifier = ctx.modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            FFMultiplier2025RootView().Compose(context = contentContext)
+            AppRootView().Compose(context = contentContext)
         }
     }
 }

@@ -5,4 +5,6 @@
 -keep class com.sun.jna.** { *; }
 -dontwarn java.awt.**
 -keep class * implements com.sun.jna.** { *; }
+-keep class * implements skip.bridge.** { *; }
+-keep class **._ModuleBundleAccessor_* { *; }
 -keep class ffmultiplier2025.module.** { *; }
