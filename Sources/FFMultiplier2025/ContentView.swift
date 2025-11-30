@@ -9,7 +9,6 @@ struct ContentView: View {
     @AppStorage("tab") var tab = ContentTab.home
     @AppStorage("name") var welcomeName = "No Name"
     @AppStorage("appearance") var appearance = ""
-    @State var viewModel = RankingViewModel()
     
     var body: some View {
         TabView(selection: $tab) {
@@ -34,7 +33,6 @@ struct ContentView: View {
                 }
             }
         }
-        .environment(viewModel)
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
     }
 }

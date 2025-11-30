@@ -11,13 +11,13 @@ import FirebaseCore
 
 public actor FirebaseModel {
   private let firestore: Firestore
-  
+
   public static let shared = FirebaseModel()
-  
+
   public init() {
     self.firestore = Firestore.firestore()
   }
-  
+
   public func updateUserName(name: String, deviceId: String) async throws {
     let userQuery = firestore.collection("users").whereField("uuid", isEqualTo: deviceId)
     let userDocRef = try await userQuery.getDocuments().documents.first?.reference
@@ -29,9 +29,10 @@ public actor FirebaseModel {
        try await firestore.collection("users").addDocument(data: User(name: name, uuid: deviceId).data)
     }
   }
-  
-  @MainActor public func watchRanking() async throws -> OnlineRankingList {
-    return await OnlineRankingList(firestore.collection("scores"))
+
+  public func watchRanking() async -> OnlineRankingList {
+    return await MainActor.run {
+      OnlineRankingList(firestore.collection("scores"))
+    }
   }
 }
-

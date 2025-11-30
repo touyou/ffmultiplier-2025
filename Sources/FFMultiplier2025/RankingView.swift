@@ -2,9 +2,8 @@ import SwiftUI
 import FFMultiplierModel
 
 struct RankingView : View {
-    @Environment(RankingViewModel.self) var viewModel: RankingViewModel
     @State var rankingList: OnlineRankingList? = nil
-    
+
     var body: some View {
         List {
             if let rankingList, !rankingList.scores.isEmpty {
@@ -16,12 +15,8 @@ struct RankingView : View {
             }
         }
         .task {
-            do {
-                let onlineRanking = try await FirebaseModel.shared.watchRanking()
-                self.rankingList = onlineRanking
-            } catch {
-                logger.error("error: \(error)")
-            }
+            let onlineRanking = await FirebaseModel.shared.watchRanking()
+            self.rankingList = onlineRanking
         }
     }
 }
@@ -30,7 +25,7 @@ struct RankItem: View {
     let score: Score
     @State var userName: String?
     @State var userId: String?
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -50,9 +45,8 @@ struct RankItem: View {
             }
         }
         .task {
-            let user = try? await score.getUser()
-            userName = user?.name
-            userId = user?.uuid
+            userName = score.userName
+            userId = score.userId
         }
     }
 }
