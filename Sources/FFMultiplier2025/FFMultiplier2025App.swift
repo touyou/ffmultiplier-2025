@@ -1,5 +1,10 @@
+#if os(Android)
+import SkipFirebaseCore
+#else
+import FirebaseCore
+#endif
 import Foundation
-import OSLog
+import SkipFuse
 import SwiftUI
 
 /// A logger for the FFMultiplier2025 module.
@@ -8,8 +13,8 @@ let logger: Logger = Logger(subsystem: "com.dev.touyou.FFMultiply", category: "F
 /// The shared top-level view for the app, loaded from the platform-specific App delegates below.
 ///
 /// The default implementation merely loads the `ContentView` for the app and logs a message.
-public struct FFMultiplier2025RootView : View {
-    public init() {
+/* SKIP @bridge */public struct FFMultiplier2025RootView : View {
+    /* SKIP @bridge */public init() {
     }
 
     public var body: some View {
@@ -23,33 +28,39 @@ public struct FFMultiplier2025RootView : View {
 /// Global application delegate functions.
 ///
 /// These functions can update a shared observable object to communicate app state changes to interested views.
-public final class FFMultiplier2025AppDelegate : Sendable {
-    public static let shared = FFMultiplier2025AppDelegate()
+/* SKIP @bridge */public final class FFMultiplier2025AppDelegate : Sendable {
+    /* SKIP @bridge */public static let shared = FFMultiplier2025AppDelegate()
 
     private init() {
     }
 
-    public func onStart() {
-        logger.debug("onStart")
+    /* SKIP @bridge */public func onInit() {
+        logger.debug("onInit")
+        
+        FirebaseApp.configure()
     }
 
-    public func onResume() {
+    /* SKIP @bridge */public func onLaunch() {
+        logger.debug("onLaunch")
+    }
+
+    /* SKIP @bridge */public func onResume() {
         logger.debug("onResume")
     }
 
-    public func onPause() {
+    /* SKIP @bridge */public func onPause() {
         logger.debug("onPause")
     }
 
-    public func onStop() {
+    /* SKIP @bridge */public func onStop() {
         logger.debug("onStop")
     }
 
-    public func onDestroy() {
+    /* SKIP @bridge */public func onDestroy() {
         logger.debug("onDestroy")
     }
 
-    public func onLowMemory() {
+    /* SKIP @bridge */public func onLowMemory() {
         logger.debug("onLowMemory")
     }
 }

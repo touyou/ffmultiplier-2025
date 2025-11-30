@@ -2,79 +2,51 @@ import SwiftUI
 import FFMultiplierModel
 
 struct RankingView : View {
-    @Environment(ViewModel.self) var viewModel: ViewModel
-    
+    @State var rankingList: OnlineRankingList? = nil
+
     var body: some View {
         List {
-            ForEach(viewModel.items) { item in
-                NavigationLink(value: item) {
-                    Label {
-                        Text(item.itemTitle)
-                    } icon: {
-                        if item.favorite {
-                            Image(systemName: "star.fill")
-                                .foregroundStyle(.yellow)
-                        }
-                    }
+            if let rankingList, !rankingList.scores.isEmpty {
+                ForEach(rankingList.scores) { score in
+                    RankItem(score: score)
                 }
-            }
-            .onDelete { offsets in
-                viewModel.items.remove(atOffsets: offsets)
-            }
-            .onMove { fromOffsets, toOffset in
-                viewModel.items.move(fromOffsets: fromOffsets, toOffset: toOffset)
+            } else {
+                Text("Empty")
             }
         }
-        .navigationDestination(for: Item.self) { item in
-            ItemView(item: item)
-                .navigationTitle(item.itemTitle)
-        }
-        .toolbar {
-            ToolbarItemGroup {
-                Button {
-                    withAnimation {
-                        viewModel.items.insert(Item(), at: 0)
-                    }
-                } label: {
-                    Label("Add", systemImage: "plus")
-                }
-            }
+        .task {
+            let onlineRanking = await FirebaseModel.shared.watchRanking()
+            self.rankingList = onlineRanking
         }
     }
 }
 
-struct ItemView : View {
-    @State var item: Item
-    @Environment(ViewModel.self) var viewModel: ViewModel
-    @Environment(\.dismiss) var dismiss
-    
+struct RankItem: View {
+    let score: Score
+    @State var userName: String?
+    @State var userId: String?
+
     var body: some View {
-        Form {
-            TextField("Title", text: $item.title)
-                .textFieldStyle(.roundedBorder)
-            Toggle("Favorite", isOn: $item.favorite)
-            DatePicker("Date", selection: $item.date)
-            Text("Notes").font(.title3)
-            TextEditor(text: $item.notes)
-                .border(Color.secondary, width: 1.0)
+        VStack(alignment: .leading) {
+            HStack {
+                if let userName {
+                    Text(userName.isEmpty ? "Anonymous" : userName)
+                } else {
+                    ProgressView()
+                }
+                if let userId {
+                    Text(userId).font(.footnote)
+                }
+            }
+            HStack {
+                Text("\(score.score)pt").bold()
+                Spacer()
+                Text("\(score.updatedAt, style: .date) \(score.updatedAt, style: .time)").font(.footnote)
+            }
         }
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    dismiss()
-                }
-            }
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
-                    viewModel.save(item: item)
-                    dismiss()
-                }
-                .disabled(!viewModel.isUpdated(item))
-            }
+        .task {
+            userName = score.userName
+            userId = score.userId
         }
     }
 }
-
-
-
